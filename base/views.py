@@ -127,9 +127,9 @@ class TaskViewSet(viewsets.ModelViewSet):
         return Response(serializer.data, status=status.HTTP_200_OK)
     @action(detail=True, methods=['POST'])
     def custom_action_detail(self, request, pk=None):
-        # Логика для действия на уровне конкретного ресурса
+    
         task = self.get_object()
-        # Ваш код обработки POST-запроса на уровне конкретного объекта
+    
         return Response({"message": f"Custom action on task {task.title}"})
     
 class CategoriesViewSet(viewsets.ModelViewSet):
@@ -138,12 +138,12 @@ class CategoriesViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['GET'])
     def custom_action_list(self, request):
-        # Логика для действия на уровне списка
+       
         return Response({"message": "Custom action on category list"})
 
     @action(detail=True, methods=['POST'])
     def custom_action_detail(self, request, pk=None):
-        # Логика для действия на уровне конкретной категории
+     
         category = self.get_object()
-        # Ваш код обработки POST-запроса на уровне конкретной категории
+     
         return Response({"message": f"Custom action on category {category.name}"})   
